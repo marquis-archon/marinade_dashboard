@@ -109,5 +109,5 @@ var router = {
   ping: handlers.ping,
   users: handlers.users,
   tokens: handlers.tokens,
-  epochs: handlers.epochs,
+  validators: handlers.validators,
 };
