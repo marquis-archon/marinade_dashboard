@@ -60,6 +60,23 @@ db.each(sql,params, (err, row) => {
       holder[index]["stats"].push(stats);
     }
  }); 
+/*
+//query2
+let sql2 = 'SELECT vote_address FROM temp WHERE epoch > -1 ORDER BY vote_address';
+//let params = [];
+var new_holder = {};
+var vote_count = new Set();
+var index = -1;
+db.each(sql2, params, (err, row) => {
+    console.log(row);
+    if(!(row.vote_address in new_holder)){
+        console.log(row);
+        new_holder[row.vote_address] = [];
+        new_holder[row.vote_address].push();
+    } else {
+        new_holder[row.vote_address].push();
+    }
+}); 
 
 // close the database connection
 db.close((err) => {
@@ -68,5 +85,5 @@ db.close((err) => {
   }
   console.log('Closed the database connection.');
   jsonHolder = JSON.stringify(holder);
-  fs.writeFileSync('validators.json',jsonHolder);
-});
+  fs.writeFileSync('validators2.json',jsonHolder);
+});*/

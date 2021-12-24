@@ -39,6 +39,8 @@ httpsServer.listen(8080, function () {
 
 // All the server logic for both the http and https server
 var unifiedServer = function (req, res) {
+
+  console.log(req.connection.localAddress, req.connection.localPort);
   // Parse the url
   var parsedUrl = url.parse(req.url, true);
 
