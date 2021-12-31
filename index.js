@@ -47,6 +47,7 @@ var unifiedServer = function (req, res) {
   // Get the path
   var path = parsedUrl.pathname;
   var trimmedPath = path.replace(/^\/+|\/+$/g, "");
+  var nestedRoute = trimmedPath.split("/");
 
   // Get the query string as an object
   var queryStringObject = parsedUrl.query;
@@ -68,16 +69,19 @@ var unifiedServer = function (req, res) {
   });
   req.on("end", function () {
     buffer += decoder.end();
-
+    console.log(nestedRoute);
     // Check the router for a matching path for a handler. If one is not found, use the notFound handler instead.
     var chosenHandler =
-      typeof router[trimmedPath] !== "undefined"
-        ? router[trimmedPath]
+      typeof router[nestedRoute[0]] !== "undefined"
+        ? router[nestedRoute[0]]
         : handlers.notFound;
+
+    // console.log(trimmedPath);
 
     // Construct the data object to send to the handler
     var data = {
       trimmedPath: trimmedPath,
+      nestedRoute: nestedRoute,
       queryStringObject: queryStringObject,
       method: method,
       headers: headers,
@@ -85,7 +89,7 @@ var unifiedServer = function (req, res) {
       page: page,
       limit: limit,
     };
-
+    console.log(data);
     // Route the request to the handler specified in the router
     chosenHandler(data, function (statusCode, payload) {
       // Use the status code returned from the handler, or set the default status code to 200
@@ -101,7 +105,7 @@ var unifiedServer = function (req, res) {
       res.setHeader("Content-Type", "application/json");
       res.writeHead(statusCode);
       res.end(payloadString);
-      console.log(trimmedPath, statusCode);
+      // console.log(trimmedPath, statusCode);
     });
   });
 };
