@@ -30,6 +30,9 @@ var httpsServerOptions = {
   cert: fs.readFileSync("./https/cert.pem"),
 };
 var httpsServer = https.createServer(httpsServerOptions, function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+  res.setHeader('Access-Control-Max-Age', 2592000)
   unifiedServer(req, res);
 });
 // Start the HTTPS server
