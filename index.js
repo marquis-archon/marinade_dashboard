@@ -24,7 +24,7 @@ var httpServer = http.createServer(function (req, res) {
 
 // Start the HTTP server
 httpServer.listen(PORT, function () {
-  console.log("The HTTP server is running on port" + PORT);
+  console.log("The HTTP server is running on port " + PORT);
 });
 
 // Instantiate the HTTPS server
@@ -39,8 +39,8 @@ var httpsServer = https.createServer(httpsServerOptions, function (req, res) {
   unifiedServer(req, res);
 });
 // Start the HTTPS server
-httpsServer.listen(8080, function () {
-  console.log("The HTTPS server is running on port " + 8080);
+httpsServer.listen(8081, function () {
+  console.log("The HTTPS server is running on port " + 8081);
 });
 
 // All the server logic for both the http and https server
