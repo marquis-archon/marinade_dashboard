@@ -37,7 +37,7 @@ var httpsServer = https.createServer(httpsServerOptions, function (req, res) {
 });
 // Start the HTTPS server
 httpsServer.listen(PORT, function () {
-  console.log("The HTTPS server is running on port " + 8080);
+  console.log("The HTTPS server is running on port " + PORT);
 });
 
 // All the server logic for both the http and https server
