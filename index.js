@@ -16,12 +16,15 @@ var helpers = require("./lib/helpers");
 const PORT = process.env.PORT || 8080;
 // Instantiate the HTTP server
 var httpServer = http.createServer(function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+  res.setHeader('Access-Control-Max-Age', 2592000)
   unifiedServer(req, res);
 });
 
 // Start the HTTP server
-httpServer.listen(8081, function () {
-  console.log("The HTTP server is running on port 8081");
+httpServer.listen(PORT, function () {
+  console.log("The HTTP server is running on port " + PORT);
 });
 
 // Instantiate the HTTPS server
@@ -36,8 +39,8 @@ var httpsServer = https.createServer(httpsServerOptions, function (req, res) {
   unifiedServer(req, res);
 });
 // Start the HTTPS server
-httpsServer.listen(8080, function () {
-  console.log("The HTTPS server is running on port " + 8080);
+httpsServer.listen(8081, function () {
+  console.log("The HTTPS server is running on port " + 8081);
 });
 
 // All the server logic for both the http and https server
@@ -72,7 +75,7 @@ var unifiedServer = function (req, res) {
   });
   req.on("end", function () {
     buffer += decoder.end();
-    console.log(nestedRoute);
+    // console.log(nestedRoute);
     // Check the router for a matching path for a handler. If one is not found, use the notFound handler instead.
     var chosenHandler =
       typeof router[nestedRoute[0]] !== "undefined"
@@ -92,7 +95,7 @@ var unifiedServer = function (req, res) {
       page: page,
       limit: limit,
     };
-    console.log(data);
+    // console.log(data);
     // Route the request to the handler specified in the router
     chosenHandler(data, function (statusCode, payload) {
       // Use the status code returned from the handler, or set the default status code to 200
