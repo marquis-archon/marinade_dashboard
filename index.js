@@ -23,7 +23,7 @@ var httpServer = http.createServer(function (req, res) {
 });
 
 // Start the HTTP server
-httpServer.listen(8081,"0.0.0.0",function () {
+httpServer.listen(PORT,"0.0.0.0",function () {
   console.log("The HTTP server is running on port " + 8081);
 });
 
