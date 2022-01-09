@@ -13,6 +13,12 @@ var fs = require("fs");
 var handlers = require("./lib/handlers");
 var helpers = require("./lib/helpers");
 
+var CronJob = require('cron').CronJob;
+var job = new CronJob('* * * * * *', function() {
+  console.log('You will see this message every second');
+}, null, true, 'America/Los_Angeles');
+job.start();
+
 const PORT = process.env.PORT || 8080;
 // Instantiate the HTTP server
 var httpServer = http.createServer(function (req, res) {
