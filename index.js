@@ -16,6 +16,15 @@ var helpers = require("./lib/helpers");
 var CronJob = require('cron').CronJob;
 var job = new CronJob('* * * * * *', function() {
   console.log('You will see this message every second');
+  // Delete current validators json
+  fs.unlink('./validators2.json', (err) => {
+    if (err) throw err;
+    console.log('File deleted')
+  });
+  // Call stake o matic to update db
+  // Generate new validators json
+  helpers.generateValidators();  
+
 }, null, true, 'America/Los_Angeles');
 job.start();
 
