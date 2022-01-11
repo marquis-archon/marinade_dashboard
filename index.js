@@ -15,7 +15,7 @@ var helpers = require("./lib/helpers");
 var shell = require('shelljs');
 
 var CronJob = require('cron').CronJob;
-var job = new CronJob('00 30 11 * * *', function() {
+var job = new CronJob('00 00 11 * * *', function() {
   // Update db 
   shell.exec('cd stake-o-matic-master && export VALIDATORS_APP_TOKEN=5TFNgpCnuRZz6mkk3oyNFbin && bash clean-score-all-mainnet.sh',
     // Delete current validators json
