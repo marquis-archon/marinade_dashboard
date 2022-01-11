@@ -12,34 +12,24 @@ var config = require("./lib/config");
 var fs = require("fs");
 var handlers = require("./lib/handlers");
 var helpers = require("./lib/helpers");
+var shell = require('shelljs');
 
-// var CronJob = require('cron').CronJob;
-// var job = new CronJob('* * * * * *', function() {
-//   console.log('You will see this message every second');
-//   // Delete current validators json
-//   fs.unlink('./validators2.json', (err) => {
-//     if (err) throw err;
-//     console.log('File deleted')
-//   });
-//   // Call stake o matic to update db
-  
-//   // Generate new validators json
-//   helpers.generateValidators();  
-
-// }, null, true, 'America/Los_Angeles');
-// job.start();
-
-const { exec } = require('child_process');
-exec('ls | grep js', (err, stdout, stderr) => {
-  if (err) {
-    //some err occurred
-    console.error(err)
-  } else {
-   // the *entire* stdout and stderr (buffered)
-   console.log(`stdout: ${stdout}`);
-   console.log(`stderr: ${stderr}`);
-  }
+var CronJob = require('cron').CronJob;
+var job = new CronJob('00 30 11 * * *', function() {
+  // Update db 
+  shell.exec('cd stake-o-matic-master && export VALIDATORS_APP_TOKEN=5TFNgpCnuRZz6mkk3oyNFbin && bash clean-score-all-mainnet.sh',
+    // Delete current validators json
+    fs.unlink('./.data/epochs/validators.json', (err) => {
+    if (err) throw err;
+    console.log('File deleted');
+    /* Generate new validators json
+     Call stake o matic to update db */
+     helpers.generateValidators()
+  }));
 });
+job.start();
+
+// shell.exec('cd stake-o-matic-master && export VALIDATORS_APP_TOKEN=5TFNgpCnuRZz6mkk3oyNFbin && bash clean-score-all-mainnet.sh',helpers.generateValidators());
 
 const PORT = process.env.PORT || 8080;
 // Instantiate the HTTP server
