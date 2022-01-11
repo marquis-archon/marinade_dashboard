@@ -1,0 +1,6 @@
+/target/
+/solana-stake-o-matic
+/registry-cli
+/db
+test-ledger/
+.vscode
