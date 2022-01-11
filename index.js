@@ -13,20 +13,33 @@ var fs = require("fs");
 var handlers = require("./lib/handlers");
 var helpers = require("./lib/helpers");
 
-var CronJob = require('cron').CronJob;
-var job = new CronJob('* * * * * *', function() {
-  console.log('You will see this message every second');
-  // Delete current validators json
-  fs.unlink('./validators2.json', (err) => {
-    if (err) throw err;
-    console.log('File deleted')
-  });
-  // Call stake o matic to update db
-  // Generate new validators json
-  helpers.generateValidators();  
+// var CronJob = require('cron').CronJob;
+// var job = new CronJob('* * * * * *', function() {
+//   console.log('You will see this message every second');
+//   // Delete current validators json
+//   fs.unlink('./validators2.json', (err) => {
+//     if (err) throw err;
+//     console.log('File deleted')
+//   });
+//   // Call stake o matic to update db
+  
+//   // Generate new validators json
+//   helpers.generateValidators();  
 
-}, null, true, 'America/Los_Angeles');
-job.start();
+// }, null, true, 'America/Los_Angeles');
+// job.start();
+
+const { exec } = require('child_process');
+exec('ls | grep js', (err, stdout, stderr) => {
+  if (err) {
+    //some err occurred
+    console.error(err)
+  } else {
+   // the *entire* stdout and stderr (buffered)
+   console.log(`stdout: ${stdout}`);
+   console.log(`stderr: ${stderr}`);
+  }
+});
 
 const PORT = process.env.PORT || 8080;
 // Instantiate the HTTP server
