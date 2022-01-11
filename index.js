@@ -15,7 +15,7 @@ var helpers = require("./lib/helpers");
 var shell = require('shelljs');
 
 var CronJob = require('cron').CronJob;
-var job = new CronJob('00 00 11 * * *', function() {
+var job = new CronJob('1 * * * * *', function() {
   const d = new Date();
   console.log('11:00 AM: job run:', d);
   // Update db 
