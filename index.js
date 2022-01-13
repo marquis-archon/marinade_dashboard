@@ -31,6 +31,18 @@ var shell = require('shelljs');
 // });
 // job.start();
 
+  // shell.exec('cd stake-o-matic-master && cargo build && export VALIDATORS_APP_TOKEN=5TFNgpCnuRZz6mkk3oyNFbin && bash clean-score-all-mainnet.sh',
+  //   // Delete current validators json
+  //   fs.unlink('./.data/epochs/validators.json', (err) => {
+  //   if (err) throw err;
+  //   console.log('File deleted');
+  //   /* Generate new validators json
+  //    Call stake o matic to update db */
+  //    helpers.generateValidators()
+  // }));
+
+
+
 const PORT = process.env.PORT || 8080;
 // Instantiate the HTTP server
 var httpServer = http.createServer(function (req, res) {
