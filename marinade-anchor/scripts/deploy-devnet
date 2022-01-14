@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+echo "deploy devnet AFFECTING TEST USERS?"
+read -p "Press any key to continue..."
+cargo build 
+anchor build
+cp target/idl/marinade_finance.json res/
+solana program deploy -v -u devnet --program-id keys/marinade_finance-keypair.json target/deploy/marinade_finance.so --upgrade-authority keys/marinade_finance-keypair.json

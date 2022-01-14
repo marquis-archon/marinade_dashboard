@@ -1,0 +1,3 @@
+#!/bin/bash
+ls -l target/debug/validator-manager
+target/debug/validator-manager $*

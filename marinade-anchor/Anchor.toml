@@ -1,0 +1,5 @@
+anchor_version = "0.14.0"
+
+[provider]
+cluster = "localnet"
+wallet = "/home/aankor/.config/solana/id.json"

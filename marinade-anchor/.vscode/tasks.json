@@ -1,0 +1,167 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cargo",
+			"subcommand": "build",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "Rust: cargo build - marinade-anchor"
+		},
+		{
+			"type": "shell",
+			"command": "anchor",
+			"args": [
+				"build"
+			],
+			"group": "build",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"label": "anchor build"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"+nightly",
+				"build",
+				"--release"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "cargo +nightly build"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"+nightly",
+				"build",
+				"--release"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "cargo +nightly build --release"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"+nightly",
+				"build",
+				"--package",
+				"cli-common"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "cli-common cargo +nightly build"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"+nightly",
+				"build",
+				"--package",
+				"smartpool"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "smartpool-cli cargo +nightly build"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"+nightly",
+				"build-bpf"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "cargo +nightly build-bpf"
+		},
+		{
+			"type": "shell",
+			"command": "bash",
+			"args": [
+				"deploy"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"label": "deploy localnet"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"test-bpf"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "cargo test-bpf"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"test-bpf",
+				"--test",
+				"liquidity",
+				"--",
+				"--nocapture"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "cargo test-bpf --test liquidity"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"test-bpf",
+				"--test",
+				"vsa_add",
+				"--",
+				"--nocapture"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "test",
+			"label": "cargo test-bpf --test vsa_add"
+		},
+		{
+			"type": "shell",
+			"command": "bash test.sh",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"label": "run test.sh"
+		},
+	]
+}

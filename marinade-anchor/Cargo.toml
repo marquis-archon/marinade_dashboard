@@ -1,0 +1,28 @@
+[workspace]
+members = [
+    #"borsh-schema",
+    #"borsh-schema/builder",
+    "programs/marinade-finance",
+    #"programs/marinade-finance/tests",
+#    "sdk/onchain",
+    "sdk/offchain-common",
+    "sdk/offchain",
+#    "sdk/reflection",
+    "cli/cli-common",
+#    "cli/admin-init",
+    "cli/admin",
+    "cli/validator-manager",
+    "cli/score-post-process",
+    "cli/marinade-cli",
+    "cli/bot-cli",
+#    "cli/marstat",
+#    "cli/marstat-server",
+#    "cli/serum-multisig"
+]
+exclude = [
+    "programs/marinade-finance/tests",
+    "borsh-schema/builder",
+]
+
+[profile.release]
+overflow-checks = true

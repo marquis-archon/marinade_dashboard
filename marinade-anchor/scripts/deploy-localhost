@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+cargo build 
+anchor build -v
+cp target/idl/marinade_program.json res/
+solana program deploy -v -u localhost --program-id keys/marinade_finance-keypair.json target/deploy/marinade_finance.so

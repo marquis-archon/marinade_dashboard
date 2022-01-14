@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container:
+      image: projectserum/build:v0.14.0
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prime GitHub Action homedir
+        run: cp -r /root/.rustup /github/home/
+      - name: Format check
+        run: cargo fmt -- --check
+
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: projectserum/build:v0.14.0
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prime GitHub Action homedir
+        run: cp -r /root/.rustup /github/home/
+      - name: Build BPF
+        run: anchor build
+      - name: Build CLI
+        run: cargo build --release
+
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: projectserum/build:v0.14.0
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prime GitHub Action homedir
+        run: cp -r /root/.rustup /github/home/
+      - name: Run tests
+        run: cargo test --verbose --manifest-path programs/marinade-finance/tests/Cargo.toml

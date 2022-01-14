@@ -1,0 +1,18 @@
+[package]
+name = "marinade-reflection"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.40"
+log = "0.4.14"
+marinade-finance-offchain-sdk = { path = "../offchain" }
+once_cell = "1.7.2"
+bincode = "1.3.3"
+solana-program-test = "1.7.11"
+rand = "0.7.3" # to be sync with solana keypairs
+solana-vote-program = "1.7.11"
+more-asserts = "0.2.1"
+serde = { version = "1.0.126", features = ["derive"] } 
