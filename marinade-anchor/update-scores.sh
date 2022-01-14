@@ -18,7 +18,7 @@ target/debug/score-post-process process-scores avg.csv --apy-file temp/apy_data.
 #>../staking-status/$EPOCH-update-scores.log
 
 # use post-process.csv to update scores on-chain
-target/debug/validator-manager $1 update-scores --scores-file post-process.csv $2 $3 $4 >temp/update-output
+# target/debug/validator-manager $1 update-scores --scores-file post-process.csv $2 $3 $4 >temp/update-output
 #>../staking-status/$EPOCH-update-scores.log
 
 # add post-process.csv to scores2 table in the sqlite-database
