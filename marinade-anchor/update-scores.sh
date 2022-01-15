@@ -23,5 +23,3 @@ target/debug/score-post-process process-scores avg.csv --apy-file temp/apy_data.
 
 # add post-process.csv to scores2 table in the sqlite-database
 bash scripts/sqlite-import-post-process.sh
-
-code temp/update-output
