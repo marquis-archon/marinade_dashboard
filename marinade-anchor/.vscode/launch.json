@@ -1,0 +1,231 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'marinade_finance'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=marinade-finance"
+                ],
+                "filter": {
+                    "name": "marinade_finance",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'initialize'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=initialize",
+                    "--package=marinade-finance"
+                ],
+                "filter": {
+                    "name": "initialize",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration tests",
+            "cargo": {
+                "args": [
+                    "test",
+                    "test_deposit_sol",
+                    "--no-run",
+                    "--manifest-path",
+                    "programs/marinade-finance/tests/Cargo.toml",
+                ],
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug mardmin set-lp-params",
+            "cargo": {
+                "args": [
+                    "+nightly",
+                    "build",
+                    "--bin=mardmin",
+                    "--package=mardmin"
+                ],
+                "filter": {
+                    "name": "mardmin",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "set-lp-params",
+                "-t",
+                "3000",
+                "-p",
+                "data",
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug cli smartpool add-liquidity",
+            "cargo": {
+                "args": [
+                    "+nightly",
+                    "build",
+                    "--bin=smartpool",
+                    "--package=smartpool"
+                ],
+                "filter": {
+                    "name": "smartpool",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "add-liquidity",
+                "10"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug cli smartpool deposit 5",
+            "cargo": {
+                "args": [
+                    "+nightly",
+                    "build",
+                    "--bin=smartpool",
+                    "--package=smartpool"
+                ],
+                "filter": {
+                    "name": "smartpool",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "deposit",
+                "5"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug marinade show",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=marinade",
+                    "--package=marinade"
+                ],
+                "filter": {
+                    "name": "marinade",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "show",
+                "-w"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug validator-manager update-scores",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=validator-manager",
+                    "--package=validator-manager"
+                ],
+                "filter": {
+                    "name": "validator-manager",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "-s",
+                "update-scores",
+                "--apy-file",
+                "temp/apy_data.json",
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'mardmin'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=mardmin",
+                    "--package=mardmin"
+                ],
+                "filter": {
+                    "name": "mardmin",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'marbot'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=marbot",
+                    "--package=marbot"
+                ],
+                "filter": {
+                    "name": "marbot",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'marbot'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=marbot",
+                    "--package=marbot"
+                ],
+                "filter": {
+                    "name": "marbot",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

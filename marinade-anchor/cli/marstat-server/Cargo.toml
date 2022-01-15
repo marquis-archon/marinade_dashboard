@@ -1,0 +1,25 @@
+[package]
+name = "marstat-server"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.40"
+rocket = { version = "0.5.0-rc.1", features = ["json"] }
+serde = { version = "1.0.126", features = ["derive"] }
+tokio = "1.8.2"
+postgres = { version = "0.19.1", features = ["with-chrono-0_4"] }
+duration-string = "0.0.6"
+chrono = { version = "0.4.19", features = ["serde"] }
+float_duration = { version = "0.3.3", features = ["chrono"] }
+rocket_cors = { git = "https://github.com/lawliet89/rocket_cors", branch = "master" }
+reqwest = { version = "0.11.4", features = ["json"] }
+solana-sdk = "1.7.11"
+marstat = { path = "../marstat", features = ["postgres"] }
+
+[dependencies.rocket_sync_db_pools]
+version = "0.1.0-rc.1"
+default-features = false
+features = ["postgres_pool"]

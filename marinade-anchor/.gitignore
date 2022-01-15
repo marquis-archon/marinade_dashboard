@@ -1,0 +1,28 @@
+# ignore Mac OS noise
+.DS_Store
+
+# ignore the build directory for Rust/Anchor
+target
+
+# ignore localnet data
+test-ledger
+tests/cli/keys
+
+# ignore temp & temp-ftp transfers & sensitive
+docker-target
+temp
+temp-ftp
+avg.csv
+post-process.csv
+keys
+
+# Ignore backup files creates by cargo fmt.
+**/*.rs.bk
+
+ts/node_modules
+
+# Emacs backups
+*~
+.#*
+\#*#
+data/marinade_staking.csv

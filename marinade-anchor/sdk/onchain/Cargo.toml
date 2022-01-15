@@ -1,0 +1,13 @@
+[package]
+name = "marinade-finance-onchain-sdk"
+version = "0.1.0"
+description = "Marinade Finance Onchain SDK"
+edition = "2018"
+
+[dependencies]
+anchor-lang = "0.14.0"
+anchor-spl = "0.14.0"
+marinade-finance = { path = "../../programs/marinade-finance" }
+
+[features]
+no-entrypoint = [ "marinade-finance/no-entrypoint" ]

@@ -1,0 +1,23 @@
+#!/bin/bash
+EPOCH=$(solana get-epoch-info | sed -n 's/.*Epoch: //p')
+FILE=../staking-status/Epoch-$EPOCH.md
+echo $FILE
+# prepare file from marinade show --to-publish
+echo marinade show --to-publish
+echo "---" >$FILE
+echo "<pre>" >>$FILE
+target/debug/marinade show --to-publish >>$FILE
+echo "</pre>" >>$FILE
+# add scores.sqlite3 database
+DB_FILE=../staking-status/scores.sqlite3
+rm $DB_FILE
+sqlite3 ../stake-o-matic/db/score-sqlite3.db <<EOC
+vacuum into "$DB_FILE"
+EOC
+# publish all to github
+cd ../staking-status
+git add .
+git commit -m "update"
+echo pushing to staking-status
+git push
+cd ../marinade-anchor

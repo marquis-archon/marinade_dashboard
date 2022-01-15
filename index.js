@@ -41,6 +41,16 @@ var shell = require('shelljs');
   //    helpers.generateValidators()
   // }));
 
+// shell.exec('bash update-json.sh',
+//   // Delete current validators json
+//   fs.unlink('./.data/epochs/validators.json', (err) => {
+//   if (err) throw err;
+//   console.log('File deleted');
+//   /* Generate new validators json
+//     Call stake o matic to update db */
+//     helpers.generateValidators();
+// }));
+
 
 
 const PORT = process.env.PORT || 8080;
