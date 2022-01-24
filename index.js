@@ -11,14 +11,15 @@ var StringDecoder = require("string_decoder").StringDecoder;
 var config = require("./lib/config");
 var fs = require("fs");
 var handlers = require("./lib/handlers");
+var mndeHandler = require("./lib/mndeHandler");
 var helpers = require("./lib/helpers");
-var shell = require('shelljs');
+var shell = require("shelljs");
 
 // var CronJob = require('cron').CronJob;
 // var job = new CronJob('1 * * * * *', function() {
 //   const d = new Date();
 //   console.log('11:00 AM: job run:', d);
-//   // Update db 
+//   // Update db
 //   shell.exec('cd stake-o-matic-master && cargo build && export VALIDATORS_APP_TOKEN=5TFNgpCnuRZz6mkk3oyNFbin && bash clean-score-all-mainnet.sh',
 //     // Delete current validators json
 //     fs.unlink('./.data/epochs/validators.json', (err) => {
@@ -31,15 +32,15 @@ var shell = require('shelljs');
 // });
 // job.start();
 
-  // shell.exec('cd stake-o-matic-master && cargo build && export VALIDATORS_APP_TOKEN=5TFNgpCnuRZz6mkk3oyNFbin && bash clean-score-all-mainnet.sh',
-  //   // Delete current validators json
-  //   fs.unlink('./.data/epochs/validators.json', (err) => {
-  //   if (err) throw err;
-  //   console.log('File deleted');
-  //   /* Generate new validators json
-  //    Call stake o matic to update db */
-  //    helpers.generateValidators()
-  // }));
+// shell.exec('cd stake-o-matic-master && cargo build && export VALIDATORS_APP_TOKEN=5TFNgpCnuRZz6mkk3oyNFbin && bash clean-score-all-mainnet.sh',
+//   // Delete current validators json
+//   fs.unlink('./.data/epochs/validators.json', (err) => {
+//   if (err) throw err;
+//   console.log('File deleted');
+//   /* Generate new validators json
+//    Call stake o matic to update db */
+//    helpers.generateValidators()
+// }));
 
 // shell.exec('bash update-json.sh',
 //   // Delete current validators json
@@ -51,19 +52,17 @@ var shell = require('shelljs');
 //     helpers.generateValidators();
 // }));
 
-
-
 const PORT = process.env.PORT || 8080;
 // Instantiate the HTTP server
 var httpServer = http.createServer(function (req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
-  res.setHeader('Access-Control-Max-Age', 2592000)
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
+  res.setHeader("Access-Control-Max-Age", 2592000);
   unifiedServer(req, res);
 });
 
 // Start the HTTP server
-httpServer.listen(PORT,"0.0.0.0",function () {
+httpServer.listen(PORT, "0.0.0.0", function () {
   console.log("The HTTP server is running on port " + 8081);
 });
 
@@ -73,9 +72,9 @@ var httpsServerOptions = {
   cert: fs.readFileSync("./https/cert.pem"),
 };
 var httpsServer = https.createServer(httpsServerOptions, function (req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
-  res.setHeader('Access-Control-Max-Age', 2592000)
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
+  res.setHeader("Access-Control-Max-Age", 2592000);
   unifiedServer(req, res);
 });
 // Start the HTTPS server
@@ -85,7 +84,6 @@ httpsServer.listen(8081, function () {
 
 // All the server logic for both the http and https server
 var unifiedServer = function (req, res) {
-
   console.log(req.connection.localAddress, req.connection.localPort);
   // Parse the url
   var parsedUrl = url.parse(req.url, true);
@@ -162,4 +160,5 @@ var router = {
   users: handlers.users,
   tokens: handlers.tokens,
   validators: handlers.validators,
+  mnde: mndeHandler.mnde,
 };
