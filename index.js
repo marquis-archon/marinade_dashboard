@@ -17,7 +17,7 @@ var shell = require("shelljs");
 // Handlers
 var handlers = require("./lib/handlers");
 var mndeHandler = require("./lib/mndeHandler");
-var mSOLHandler = require("./lib/msolHandler");
+var mSOLHandler = require("./lib/mSOLHandler");
 
 // Helper functions
 var helpers = require("./lib/helpers");
