@@ -10,10 +10,17 @@ var url = require("url");
 var StringDecoder = require("string_decoder").StringDecoder;
 var config = require("./lib/config");
 var fs = require("fs");
+
+// Cron job
+var shell = require("shelljs");
+
+// Handlers
 var handlers = require("./lib/handlers");
 var mndeHandler = require("./lib/mndeHandler");
+var mSOLHandler = require("./lib/msolHandler");
+
+// Helper functions
 var helpers = require("./lib/helpers");
-var shell = require("shelljs");
 
 // var CronJob = require('cron').CronJob;
 // var job = new CronJob('1 * * * * *', function() {
@@ -161,4 +168,5 @@ var router = {
   tokens: handlers.tokens,
   validators: handlers.validators,
   mnde: mndeHandler.mnde,
+  mSOL: mSOLHandler.mSOL,
 };
